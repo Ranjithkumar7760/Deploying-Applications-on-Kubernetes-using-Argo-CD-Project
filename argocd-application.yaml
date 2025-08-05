@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-username/expense-tracker.git
+    repoURL: https://github.com/Ranjithkumar7760/Deploying-Applications-on-Kubernetes-using-Argo-CD-Project.git
     targetRevision: HEAD
     path: k8s
   destination:

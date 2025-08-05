@@ -15,4 +15,8 @@ spec:
   syncPolicy:
     automated:
       prune: true
+<<<<<<< HEAD
       selfHeal: true
+=======
+      selfHeal: true
+>>>>>>> be753c177490c2c20be588ba59616123f83ad22b

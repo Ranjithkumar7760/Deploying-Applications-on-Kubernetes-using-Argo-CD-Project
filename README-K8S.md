@@ -58,7 +58,7 @@ git add .
 git commit -m "Initial Kubernetes deployment"
 
 # Add your remote repository
-git remote add origin https://github.com/your-username/expense-tracker.git
+git remote add origin https://github.com/Ranjithkumar7760/Deploying-Applications-on-Kubernetes-using-Argo-CD-Project.git
 git push -u origin main
 ```
 
