@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: expense-tracker
+  name: personal-finance-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,7 +13,7 @@ spec:
     path: .
   destination:
     server: https://kubernetes.default.svc
-    namespace: expense-tracker
+    namespace: personal-finance-app
   syncPolicy:
     automated:
       prune: true
