@@ -14,13 +14,11 @@ jobs:
     - name: Build and Push Backend Image to ECR
       run: |
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 126623035052.dkr.ecr.us-east-1.amazonaws.com
-        cd backend
-        docker build -t argocd-ecr-backend .
-        docker tag argocd-ecr-backend:latest 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr-backend:latest
+        cd Application-Code/backend
+        docker build -t 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr-backend:latest .
         docker push 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr-backend:latest
     - name: Build and Push Frontend Image to ECR
       run: |
-        cd frontend
-        docker build -t argocd-ecr-frontend .
-        docker tag argocd-ecr-frontend:latest 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr-frontend:latest
+        cd Application-Code/frontend
+        docker build -t 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr-frontend:latest .
         docker push 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr-frontend:latest
