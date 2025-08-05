@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Configuration
-REGISTRY="your-registry"  # Replace with your ECR registry URL
-REGION="us-west-2"       # Replace with your AWS region
-BACKEND_IMAGE="$REGISTRY/expense-backend"
-FRONTEND_IMAGE="$REGISTRY/expense-frontend"
+REGISTRY="126623035052.dkr.ecr.us-east-1.amazonaws.com"  # Your ECR registry URL
+REGION="us-east-1"       # Your AWS region
+BACKEND_IMAGE="$REGISTRY/argocd-ecr"
+FRONTEND_IMAGE="$REGISTRY/argocd-ecr"
 TAG="latest"
 
 # Login to ECR
@@ -13,15 +13,15 @@ aws ecr get-login-password --region $REGION | docker login --username AWS --pass
 
 # Build and push backend
 echo "Building backend image..."
-docker build -t $BACKEND_IMAGE:$TAG ./Application-Code/backend/
+docker build -t $BACKEND_IMAGE:backend-$TAG ./Application-Code/backend/
 echo "Pushing backend image..."
-docker push $BACKEND_IMAGE:$TAG
+docker push $BACKEND_IMAGE:backend-$TAG
 
 # Build and push frontend
 echo "Building frontend image..."
-docker build -t $FRONTEND_IMAGE:$TAG ./Application-Code/frontend/
+docker build -t $FRONTEND_IMAGE:frontend-$TAG ./Application-Code/frontend/
 echo "Pushing frontend image..."
-docker push $FRONTEND_IMAGE:$TAG
+docker push $FRONTEND_IMAGE:frontend-$TAG
 
 echo "Images pushed successfully!"
 echo "Backend: $BACKEND_IMAGE:$TAG"
