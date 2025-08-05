@@ -1,0 +1,20 @@
+name: CI Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build and Push Docker Image to ECR
+      run: |
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 126623035052.dkr.ecr.us-east-1.amazonaws.com
+        
+        docker build -t argocd-ecr .
+
+        docker tag argocd-ecr:latest 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr:latest
+
+        docker push 126623035052.dkr.ecr.us-east-1.amazonaws.com/argocd-ecr:latest
